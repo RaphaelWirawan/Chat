@@ -8,6 +8,10 @@ import {
 } from "react-native";
 
 class Main extends React.Component {
+  onPress = () => {
+    // 1.
+    this.props.navigation.navigate("Chat", { name: this.state.name });
+  };
   onChangeText = (name) => this.setState({ name });
   state = { name: "" }; // 2. <- Add the component state
   render() {
@@ -37,6 +41,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: offset,
     borderColor: "#111111",
     borderWidth: 1,
+  },
+  title: {
+    // 4.
+    marginTop: offset,
+    marginLeft: offset,
+    fontSize: offset,
+  },
+  buttonText: {
+    // 5.
+    marginLeft: offset,
+    fontSize: offset,
   },
 });
 

@@ -1,16 +1,28 @@
 import React, { Component } from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 
 class Main extends React.Component {
+  onChangeText = (name) => this.setState({ name });
   state = { name: "" }; // 2. <- Add the component state
   render() {
     return (
       <View>
+        <Text style={styles.title}>Enter your name:</Text>
         <TextInput
+          onChangeText={this.onChangeText}
           style={styles.nameInput}
-          placeHolder="John Cena"
+          placeHolder="X Æ A-12"
           value={this.state.name}
         />
+        <TouchableOpacity onPress={this.onPress}>
+          <Text style={styles.buttonText}>Next</Text>
+        </TouchableOpacity>
       </View>
     );
   }

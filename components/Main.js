@@ -9,11 +9,10 @@ import {
 
 class Main extends React.Component {
   onPress = () => {
-    // 1.
     this.props.navigation.navigate("Chat", { name: this.state.name });
   };
   onChangeText = (name) => this.setState({ name });
-  state = { name: "" }; // 2. <- Add the component state
+  state = { name: "" };
   render() {
     return (
       <View>

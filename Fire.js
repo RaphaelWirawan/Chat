@@ -7,6 +7,22 @@ class Fire {
     this.observeAuth();
   }
 
+  get ref() {
+    return firebase.database().ref('messages');
+  }
+
+  on = callback =>
+    this.ref
+      .limitToLast(20)
+      .on('child_added', snapshot => callback(this.parse(snapshot)));
+
+  parse = snapshot => {
+  }
+
+  off() {
+    this.ref.off();
+  }
+
   observeAuth = () =>
     firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 

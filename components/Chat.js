@@ -10,6 +10,19 @@ class Chat extends React.Component {
     messages: [],
   };
 
+
+componentDidMount() {
+  Fire.shared.on(message =>
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, message),
+    }))
+  );
+}
+
+componentWillUnmount() {
+Fire.shared.off();
+}
+
   render() {
     return <GiftedChat messages={this.state.messages} />;
   }
